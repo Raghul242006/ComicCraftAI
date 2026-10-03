@@ -1,0 +1,686 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+:root {
+    --background: #0b0b12;
+    --surface: #151521;
+    --surface-light: #20202d;
+    --text: #f7f7fb;
+    --muted: #a5a5b5;
+    --accent: #ffca28;
+    --accent-dark: #e5a900;
+    --border: #2c2c3a;
+    --danger: #ff5c5c;
+}
+
+
+body {
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            #27213d,
+            transparent 35%
+        ),
+        var(--background);
+
+    color: var(--text);
+
+    min-height: 100vh;
+
+    line-height: 1.6;
+}
+
+
+.navbar {
+    height: 75px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 0 7%;
+
+    border-bottom:
+        1px solid var(--border);
+
+    background:
+        rgba(11, 11, 18, 0.9);
+
+    backdrop-filter: blur(12px);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+}
+
+
+.logo {
+    font-size: 1.4rem;
+
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+}
+
+
+.logo span {
+    color: var(--accent);
+
+    margin-right: 8px;
+}
+
+
+.nav-subtitle {
+    color: var(--muted);
+
+    font-size: 0.9rem;
+}
+
+
+.nav-button {
+    text-decoration: none;
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    padding: 9px 16px;
+
+    border-radius: 10px;
+
+    transition: 0.2s;
+}
+
+
+.nav-button:hover {
+    border-color: var(--accent);
+
+    color: var(--accent);
+}
+
+
+.hero {
+    width: min(1100px, 92%);
+
+    margin: 70px auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+
+.hero-text h1 {
+    font-size:
+        clamp(
+            3rem,
+            6vw,
+            5rem
+        );
+
+    line-height: 1;
+
+    letter-spacing: -3px;
+
+    margin: 20px 0;
+}
+
+
+.hero-text h1 span,
+.comic-header h1 span {
+    color: var(--accent);
+}
+
+
+.hero-text p {
+    color: var(--muted);
+
+    font-size: 1.15rem;
+
+    max-width: 550px;
+}
+
+
+.badge {
+    display: inline-block;
+
+    color: var(--accent);
+
+    border:
+        1px solid
+        rgba(255, 202, 40, 0.35);
+
+    background:
+        rgba(255, 202, 40, 0.08);
+
+    padding: 7px 13px;
+
+    border-radius: 30px;
+
+    font-size: 0.85rem;
+}
+
+
+.generator-card {
+    background:
+        rgba(21, 21, 33, 0.95);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 25px 80px
+        rgba(0, 0, 0, 0.35);
+}
+
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+
+.form-section label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: 700;
+
+    font-size: 0.9rem;
+}
+
+
+textarea,
+input,
+select {
+    width: 100%;
+
+    border:
+        1px solid var(--border);
+
+    background: #0e0e17;
+
+    color: var(--text);
+
+    border-radius: 12px;
+
+    padding: 13px 14px;
+
+    font: inherit;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+textarea {
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+
+textarea:focus,
+input:focus,
+select:focus {
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(255, 202, 40, 0.08);
+}
+
+
+.two-columns {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 15px;
+}
+
+
+.generate-button {
+    width: 100%;
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            #ffdf72
+        );
+
+    color: #111;
+
+    font-weight: 800;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    display: inline-block;
+
+    text-align: center;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.generate-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(255, 202, 40, 0.2);
+}
+
+
+.error-box {
+    background:
+        rgba(255, 92, 92, 0.08);
+
+    border:
+        1px solid
+        rgba(255, 92, 92, 0.3);
+
+    color: #ffaaaa;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    margin-bottom: 20px;
+}
+
+
+footer {
+    text-align: center;
+
+    padding: 35px;
+
+    color: var(--muted);
+
+    border-top:
+        1px solid var(--border);
+}
+
+
+.comic-page {
+    width: min(1000px, 92%);
+
+    margin: 60px auto;
+}
+
+
+.comic-header {
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+
+.comic-header h1 {
+    font-size:
+        clamp(
+            2.5rem,
+            5vw,
+            4.5rem
+        );
+
+    margin: 15px 0;
+}
+
+
+.comic-header p {
+    color: var(--muted);
+}
+
+
+.comic-panel {
+    background:
+        var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin-bottom: 35px;
+
+    box-shadow:
+        0 15px 50px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+.panel-header {
+    padding: 20px 25px;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.panel-number {
+    font-size: 0.75rem;
+
+    color: var(--accent);
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+.panel-header h2 {
+    margin-top: 5px;
+
+    font-size: 1.7rem;
+}
+
+
+.panel-image {
+    background: #08080d;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
+.panel-image img {
+    display: block;
+
+    width: 100%;
+
+    max-height: 700px;
+
+    object-fit: contain;
+}
+
+
+.panel-content {
+    padding: 25px;
+}
+
+
+.scene-description {
+    color: var(--muted);
+
+    font-style: italic;
+
+    margin-bottom: 25px;
+}
+
+
+.story-block {
+    border-left:
+        3px solid var(--accent);
+
+    padding-left: 15px;
+
+    margin-bottom: 18px;
+}
+
+
+.story-block strong {
+    color: var(--accent);
+
+    display: block;
+
+    margin-bottom: 5px;
+}
+
+
+.story-block p {
+    color: #e5e5eb;
+}
+
+
+.dialogue-box {
+    background:
+        var(--surface-light);
+
+    border-radius: 12px;
+
+    padding: 18px;
+
+    margin-top: 20px;
+}
+
+
+.dialogue-box strong {
+    color: var(--accent);
+}
+
+
+.prompt-details {
+    margin-top: 25px;
+
+    color: var(--muted);
+}
+
+
+.prompt-details summary {
+    cursor: pointer;
+
+    color: var(--accent);
+}
+
+
+.prompt-details p {
+    margin-top: 10px;
+
+    font-size: 0.85rem;
+}
+
+
+.export-section {
+    text-align: center;
+
+    padding: 50px 20px;
+
+    margin-top: 50px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 20px;
+
+    background:
+        var(--surface);
+}
+
+
+.export-section h2 {
+    margin-bottom: 10px;
+}
+
+
+.export-section p {
+    color: var(--muted);
+
+    margin-bottom: 25px;
+}
+
+
+.download-button,
+.secondary-button {
+    display: inline-block;
+
+    text-decoration: none;
+
+    padding: 13px 20px;
+
+    border-radius: 10px;
+
+    margin: 5px;
+
+    font-weight: 700;
+}
+
+
+.download-button {
+    background: var(--accent);
+
+    color: #111;
+}
+
+
+.secondary-button {
+    color: var(--text);
+
+    border:
+        1px solid var(--border);
+}
+
+
+.success-page {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+}
+
+
+.success-card {
+    max-width: 600px;
+
+    width: 100%;
+
+    text-align: center;
+
+    padding: 60px 40px;
+
+    background:
+        var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 25px;
+}
+
+
+.success-icon {
+    width: 80px;
+
+    height: 80px;
+
+    margin: 0 auto 25px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    color: #111;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 2.5rem;
+
+    font-weight: bold;
+}
+
+
+.success-card h1 {
+    margin-bottom: 15px;
+}
+
+
+.success-card p {
+    color: var(--muted);
+
+    margin-bottom: 30px;
+}
+
+
+@media (max-width: 800px) {
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        margin-top: 40px;
+
+        gap: 40px;
+    }
+
+
+    .hero-text h1 {
+        font-size: 3.2rem;
+    }
+
+
+    .two-columns {
+        grid-template-columns: 1fr;
+    }
+
+
+    .nav-subtitle {
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+
+    .generator-card {
+        padding: 20px;
+    }
+
+
+    .comic-page {
+        width: 94%;
+    }
+
+}
