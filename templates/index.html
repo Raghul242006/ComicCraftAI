@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ComicCraft - AI Comic Creator</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        <span>⚡</span>
+        ComicCraft
+    </div>
+
+    <div class="nav-subtitle">
+        AI Comic Story Creator
+    </div>
+
+</header>
+
+
+<main class="hero">
+
+    <section class="hero-text">
+
+        <div class="badge">
+            ✨ Powered by Generative AI
+        </div>
+
+        <h1>
+            Turn Your Idea Into
+            <span>Comic Magic.</span>
+        </h1>
+
+        <p>
+            Create personalized comic stories with
+            AI-generated plots, characters, dialogue
+            and illustrations.
+        </p>
+
+    </section>
+
+
+    <section class="generator-card">
+
+        {% if error %}
+
+        <div class="error-box">
+            <strong>Generation Error</strong>
+
+            <p>
+                {{ error }}
+            </p>
+        </div>
+
+        {% endif %}
+
+
+        <form
+            action="/generate"
+            method="post"
+            id="comicForm"
+        >
+
+            <div class="form-section">
+
+                <label for="story_prompt">
+                    Story Prompt
+                </label>
+
+                <textarea
+                    id="story_prompt"
+                    name="story_prompt"
+                    placeholder="Example: A brave fox discovers a magical portal inside an enchanted forest..."
+                    required
+                >{{ form_data.story_prompt if form_data else '' }}</textarea>
+
+            </div>
+
+
+            <div class="two-columns">
+
+                <div class="form-section">
+
+                    <label for="character_name">
+                        Main Character
+                    </label>
+
+                    <input
+                        type="text"
+                        id="character_name"
+                        name="character_name"
+                        placeholder="Example: Luna"
+                        value="{{ form_data.character_name if form_data else '' }}"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-section">
+
+                    <label for="setting">
+                        Setting
+                    </label>
+
+                    <select
+                        id="setting"
+                        name="setting"
+                    >
+
+                        <option value="Enchanted Forest">
+                            Enchanted Forest
+                        </option>
+
+                        <option value="Futuristic City">
+                            Futuristic City
+                        </option>
+
+                        <option value="Outer Space">
+                            Outer Space
+                        </option>
+
+                        <option value="Ancient Kingdom">
+                            Ancient Kingdom
+                        </option>
+
+                        <option value="School">
+                            School
+                        </option>
+
+                        <option value="Underwater City">
+                            Underwater City
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="two-columns">
+
+                <div class="form-section">
+
+                    <label for="tone">
+                        Story Tone
+                    </label>
+
+                    <select
+                        id="tone"
+                        name="tone"
+                    >
+
+                        <option value="dramatic">
+                            Dramatic
+                        </option>
+
+                        <option value="funny">
+                            Funny
+                        </option>
+
+                        <option value="light-hearted">
+                            Light-hearted
+                        </option>
+
+                        <option value="poetic">
+                            Poetic
+                        </option>
+
+                        <option value="mysterious">
+                            Mysterious
+                        </option>
+
+                        <option value="adventurous">
+                            Adventurous
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-section">
+
+                    <label for="art_style">
+                        Art Style
+                    </label>
+
+                    <select
+                        id="art_style"
+                        name="art_style"
+                    >
+
+                        <option value="anime">
+                            Anime
+                        </option>
+
+                        <option value="comic book">
+                            Comic Book
+                        </option>
+
+                        <option value="pixel art">
+                            Pixel Art
+                        </option>
+
+                        <option value="watercolor">
+                            Watercolor
+                        </option>
+
+                        <option value="cinematic">
+                            Cinematic
+                        </option>
+
+                        <option value="realistic">
+                            Realistic
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-section">
+
+                <label for="panel_count">
+                    Number of Panels
+                </label>
+
+                <select
+                    id="panel_count"
+                    name="panel_count"
+                >
+
+                    <option value="5">
+                        5 Panels
+                    </option>
+
+                    <option value="6">
+                        6 Panels
+                    </option>
+
+                    <option value="7">
+                        7 Panels
+                    </option>
+
+                    <option value="8">
+                        8 Panels
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="generate-button"
+                id="generateButton"
+            >
+
+                <span>
+                    ✨ Generate My Comic
+                </span>
+
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        ComicCraft • AI-powered storytelling
+    </p>
+
+</footer>
+
+
+<script src="/static/js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Your Comic - ComicCraft
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        <span>⚡</span>
+        ComicCraft
+    </div>
+
+    <a
+        href="/"
+        class="nav-button"
+    >
+        + New Comic
+    </a>
+
+</header>
+
+
+<main class="comic-page">
+
+    <section class="comic-header">
+
+        <div class="badge">
+            ✨ Your AI Comic Is Ready
+        </div>
+
+        <h1>
+            Your Story,
+            <span>Illustrated.</span>
+        </h1>
+
+        <p>
+            Review your comic panel by panel.
+        </p>
+
+    </section>
+
+
+    <section class="panels-container">
+
+        {% for panel in panels %}
+
+        <article class="comic-panel">
+
+            <div class="panel-header">
+
+                <span class="panel-number">
+                    PANEL {{ panel.panel_number }}
+                </span>
+
+                <h2>
+                    {{ panel.title }}
+                </h2>
+
+            </div>
+
+
+            <div class="panel-image">
+
+                <img
+                    src="{{ panel.image_url }}"
+                    alt="{{ panel.title }}"
+                >
+
+            </div>
+
+
+            <div class="panel-content">
+
+                <div class="scene-description">
+
+                    {{ panel.scene_description }}
+
+                </div>
+
+
+                {% if panel.caption %}
+
+                <div class="story-block">
+
+                    <strong>
+                        🎬 Caption
+                    </strong>
+
+                    <p>
+                        {{ panel.caption }}
+                    </p>
+
+                </div>
+
+                {% endif %}
+
+
+                {% if panel.narration %}
+
+                <div class="story-block">
+
+                    <strong>
+                        📖 Narration
+                    </strong>
+
+                    <p>
+                        {{ panel.narration }}
+                    </p>
+
+                </div>
+
+                {% endif %}
+
+
+                {% if panel.dialogue %}
+
+                <div class="dialogue-box">
+
+                    <strong>
+                        💬 Dialogue
+                    </strong>
+
+                    <p>
+                        "{{ panel.dialogue }}"
+                    </p>
+
+                </div>
+
+                {% endif %}
+
+
+                <details class="prompt-details">
+
+                    <summary>
+                        View Image Prompt
+                    </summary>
+
+                    <p>
+                        {{ panel.image_prompt }}
+                    </p>
+
+                </details>
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </section>
+
+
+    <section class="export-section">
+
+        <h2>
+            Your comic is complete!
+        </h2>
+
+        <p>
+            Download your complete story as a PDF.
+        </p>
+
+        <a
+            href="{{ comic.pdf_url }}"
+            class="download-button"
+            download
+        >
+            📕 Download Comic PDF
+        </a>
+
+        <a
+            href="/export-success"
+            class="secondary-button"
+        >
+            Continue
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        ComicCraft • Created with Generative AI
+    </p>
+
+</footer>
+
+</body>
+</html>
